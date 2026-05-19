@@ -1,6 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
-using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Data;
 using System.Drawing;
@@ -33,6 +31,14 @@ namespace ninelivesbooks
 
         private void ConfigurarGrid()
         {
+            dgvBooksBundle.BackgroundColor = Color.FromArgb(255, 245, 220);
+            dgvBooksBundle.BorderStyle = BorderStyle.None;
+            dgvBooksBundle.EnableHeadersVisualStyles = false;
+            dgvBooksBundle.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 60, 40);
+            dgvBooksBundle.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(255, 240, 200);
+            dgvBooksBundle.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 10F, FontStyle.Bold);
+            dgvBooksBundle.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 215, 160);
+        
             dgvBooksBundle.AutoGenerateColumns = true;
             dgvBooksBundle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvBooksBundle.MultiSelect = false;
@@ -91,12 +97,6 @@ namespace ninelivesbooks
                         {
                             if (dr.Read())
                             {
-                                string colunas = "";
-                                for (int i = 0; i < dr.FieldCount; i++)
-                                {
-                                    colunas += dr.GetName(i) + Environment.NewLine;
-                                }
-
                                 lblBundleName.Text = dr["bundle_name"] == DBNull.Value ? "" : dr["bundle_name"].ToString();
                                 lblTheme.Text = dr["bundle_theme"] == DBNull.Value ? "" : dr["bundle_theme"].ToString();
                                 lblTotalBooks.Text = dr["total_books"] == DBNull.Value ? "0" : dr["total_books"].ToString();
@@ -290,10 +290,7 @@ namespace ninelivesbooks
                 new frmAddBundle(bundleId)
             );
         }
-            // CarregarResumoBundle();
-            // CarregarLivrosDoBundle();
         
-
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(bookIdSelecionado))
@@ -301,109 +298,188 @@ namespace ninelivesbooks
                 MessageBox.Show("Select a book to remove from the bundle.");
                 return;
             }
-
+        
             DialogResult result = MessageBox.Show(
                 "Do you want to remove this book from the bundle?",
                 "Confirmation",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+                MessageBoxIcon.Question
+            );
+        
+            if (result != DialogResult.Yes)
+                return;
+        
+            try
             {
-                try
+                using (MySqlConnection con = Db.GetConnection())
                 {
-                    using (MySqlConnection con = Db.GetConnection())
+                    con.Open();
+        
+                    using (MySqlTransaction transaction = con.BeginTransaction())
                     {
-                        string sql = @"
-                            DELETE FROM bundle_book
-                            WHERE bundle_id_in_bundle_book = @bundleId
-                              AND book_id_in_bundle_book = @bookId;";
-
-                        using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                        try
                         {
-                            cmd.Parameters.AddWithValue("@bundleId", bundleId);
-                            cmd.Parameters.AddWithValue("@bookId", bookIdSelecionado);
-
-                            con.Open();
-                            cmd.ExecuteNonQuery();
+                            string deleteSql = @"
+                                DELETE FROM bundle_book
+                                WHERE bundle_id_in_bundle_book = @bundleId
+                                  AND book_id_in_bundle_book = @bookId;";
+        
+                            using (MySqlCommand deleteCmd = new MySqlCommand(deleteSql, con, transaction))
+                            {
+                                deleteCmd.Parameters.AddWithValue("@bundleId", bundleId);
+                                deleteCmd.Parameters.AddWithValue("@bookId", bookIdSelecionado);
+                                deleteCmd.ExecuteNonQuery();
+                            }
+        
+                            string updateBookSql = @"
+                                UPDATE book
+                                SET
+                                    book_status = 'AVAILABLE',
+                                    reason_status = NULL
+                                WHERE book_id = @bookId
+                                  AND book_status <> 'SOLD';";
+        
+                            using (MySqlCommand updateCmd = new MySqlCommand(updateBookSql, con, transaction))
+                            {
+                                updateCmd.Parameters.AddWithValue("@bookId", bookIdSelecionado);
+                                updateCmd.ExecuteNonQuery();
+                            }
+        
+                            transaction.Commit();
+                        }
+                        catch
+                        {
+                            transaction.Rollback();
+                            throw;
                         }
                     }
-
-                    bookIdSelecionado = null;
-                    CarregarLivrosDoBundle();
-                    CarregarResumoBundle();
-
-                    MessageBox.Show("Book successfully removed from bundle.");
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error removing book from bundle: " + ex.Message);
-                }
+        
+                bookIdSelecionado = null;
+        
+                CarregarLivrosDoBundle();
+                CarregarResumoBundle();
+        
+                MessageBox.Show("Book successfully removed from bundle.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error removing book from bundle: " + ex.Message);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-               "Do you want to delete this bundle ?",
-               "Confirmation",
-               MessageBoxButtons.YesNo,
-               MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes)
+            if (lblStatus.Text == "SOLD")
             {
-                try
+                MessageBox.Show("Sold bundles should not be deleted.");
+                return;
+            }
+        
+            DialogResult result = MessageBox.Show(
+                "Do you want to delete this bundle?\n\nBooks inside this bundle will become AVAILABLE again, except books already SOLD.",
+                "Confirmation",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+        
+            if (result != DialogResult.Yes)
+                return;
+        
+            try
+            {
+                using (MySqlConnection con = Db.GetConnection())
                 {
-                    using (MySqlConnection con = Db.GetConnection())
+                    con.Open();
+        
+                    using (MySqlTransaction transaction = con.BeginTransaction())
                     {
-                        con.Open();
-                        MySqlTransaction transacao = con.BeginTransaction();
-
                         try
                         {
-                            if (lblStatus.Text == "SOLD")
+                            string restoreBooksSql = @"
+                                UPDATE book bk
+                                INNER JOIN bundle_book bb
+                                    ON bb.book_id_in_bundle_book = bk.book_id
+                                SET
+                                    bk.book_status = 'AVAILABLE',
+                                    bk.reason_status = NULL
+                                WHERE bb.bundle_id_in_bundle_book = @bundleId
+                                  AND bk.book_status <> 'SOLD';";
+        
+                            using (MySqlCommand restoreCmd = new MySqlCommand(restoreBooksSql, con, transaction))
                             {
-                                MessageBox.Show("Sold bundles should not be deleted.");
-                                return;
+                                restoreCmd.Parameters.AddWithValue("@bundleId", bundleId);
+                                restoreCmd.ExecuteNonQuery();
                             }
-
-                            string sqlRelacao = @"
+        
+                            string deleteRelationSql = @"
                                 DELETE FROM bundle_book
                                 WHERE bundle_id_in_bundle_book = @bundleId;";
-
-                            using (MySqlCommand cmd1 = new MySqlCommand(sqlRelacao, con, transacao))
+        
+                            using (MySqlCommand relationCmd = new MySqlCommand(deleteRelationSql, con, transaction))
                             {
-                                cmd1.Parameters.AddWithValue("@bundleId", bundleId);
-                                cmd1.ExecuteNonQuery();
+                                relationCmd.Parameters.AddWithValue("@bundleId", bundleId);
+                                relationCmd.ExecuteNonQuery();
                             }
-
-                            string sqlBundle = @"
+        
+                            string deleteBundleSql = @"
                                 DELETE FROM bundle
                                 WHERE bundle_id = @bundleId;";
-
-                            using (MySqlCommand cmd2 = new MySqlCommand(sqlBundle, con, transacao))
+        
+                            using (MySqlCommand bundleCmd = new MySqlCommand(deleteBundleSql, con, transaction))
                             {
-                                cmd2.Parameters.AddWithValue("@bundleId", bundleId);
-                                cmd2.ExecuteNonQuery();
+                                bundleCmd.Parameters.AddWithValue("@bundleId", bundleId);
+                                bundleCmd.ExecuteNonQuery();
                             }
-
-                            transacao.Commit();
-                            MessageBox.Show("Bundle successfully deleted.");
-                            this.Close();
+        
+                            LogHelper.RegistrarLogTrans(
+                                con,
+                                transaction,
+                                "BUNDLE",
+                                bundleId,
+                                "DELETE",
+                                $"Bundle '{bundleId}' deleted"
+                            );
+        
+                            transaction.Commit();
                         }
-                        catch (Exception exInterno)
+                        catch
                         {
-                            transacao.Rollback();
-                            MessageBox.Show("Error deleting bundle: " + exInterno.Message);
+                            transaction.Rollback();
+                            throw;
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Connection error while deleting bundle: " + ex.Message);
-                }
+        
+                MessageBox.Show("Bundle successfully deleted.");
+        
+                frmPrincipal.PrincipalInstance.AbrirForm<frmBundles>();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting bundle: " + ex.Message);
             }
         }
+
+        private void RestoreBooksFromBundle(MySqlConnection con, MySqlTransaction transaction)
+        {
+            string sql = @"
+                UPDATE book bk
+                INNER JOIN bundle_book bb
+                    ON bb.book_id_in_bundle_book = bk.book_id
+                SET
+                    bk.book_status = 'AVAILABLE',
+                    bk.reason_status = NULL
+                WHERE bb.bundle_id_in_bundle_book = @bundleId
+                  AND bk.book_status <> 'SOLD';";
+        
+            using (MySqlCommand cmd = new MySqlCommand(sql, con, transaction))
+            {
+                cmd.Parameters.AddWithValue("@bundleId", bundleId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
         private void dgvBooksBundle_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
