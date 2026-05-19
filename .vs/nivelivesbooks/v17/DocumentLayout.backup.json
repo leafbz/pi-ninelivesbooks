@@ -1,77 +1,82 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\",
+  "WorkspaceRootPath": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|c:\\users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmregistration.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmregistration.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmaddbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmaddbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmaddbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmaddbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmaddbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmaddbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmaddbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmaddbundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmaddbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmaddbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rafael.rbrazao\\AppData\\Local\\Temp\\9acc7d93-b574-4ca2-adbe-47db66ed4ff5_frmAddBundle_BundleBookItem_recommended.zip.ff5\\frmAddBundle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|c:\\users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmaddbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmaddbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|c:\\users\\funher.asleite\\source\\repos\\pininelivesbooks\\loghelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:loghelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|c:\\users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|c:\\users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A9C39B1B-F98A-497C-AC1B-A086D0601B23}|nivelivesbooks.csproj|solutionrelative:frmbundledetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -81,17 +86,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 9,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\Program.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-14T17:50:45.731Z",
               "IsPinned": true,
@@ -99,7 +104,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Bookmark",
@@ -111,105 +116,19 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmPrincipal.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmPrincipal.cs",
-              "RelativeDocumentMoniker": "frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmPrincipal.cs",
-              "RelativeToolTip": "frmPrincipal.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAmwEUAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T19:03:54.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmPrincipal.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmPrincipal.cs",
-              "RelativeDocumentMoniker": "frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmPrincipal.cs [Design]",
-              "RelativeToolTip": "frmPrincipal.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T19:03:51.486Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmLog.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLog.cs",
-              "RelativeDocumentMoniker": "frmLog.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLog.cs",
-              "RelativeToolTip": "frmLog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T19:03:19.181Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "frmRegistration.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmRegistration.Designer.cs",
-              "RelativeDocumentMoniker": "frmRegistration.Designer.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmRegistration.Designer.cs",
-              "RelativeToolTip": "frmRegistration.Designer.cs",
-              "ViewState": "AgIAAOIAAAAAAAAAAAAAwP0AAABjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T19:01:04.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmRegistration.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmRegistration.cs",
-              "RelativeDocumentMoniker": "frmRegistration.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmRegistration.cs",
-              "RelativeToolTip": "frmRegistration.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAIwOEAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T18:59:48.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "frmLogin.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLogin.Designer.cs",
-              "RelativeDocumentMoniker": "frmLogin.Designer.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLogin.Designer.cs",
-              "RelativeToolTip": "frmLogin.Designer.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAAwIAAAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T18:59:35.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "frmLogin.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLogin.cs",
-              "RelativeDocumentMoniker": "frmLogin.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLogin.cs",
-              "RelativeToolTip": "frmLogin.cs",
-              "ViewState": "AgIAAMQAAAAAAAAAAAAcwOMAAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T18:59:28.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "frmRegistration.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmRegistration.cs",
               "RelativeDocumentMoniker": "frmRegistration.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmRegistration.cs [Design]",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmRegistration.cs [Design]",
               "RelativeToolTip": "frmRegistration.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-18T18:17:06.049Z",
@@ -217,97 +136,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 0,
               "Title": "frmAddBundle.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\AppData\\Local\\Temp\\9acc7d93-b574-4ca2-adbe-47db66ed4ff5_frmAddBundle_BundleBookItem_recommended.zip.ff5\\frmAddBundle.cs",
-              "RelativeDocumentMoniker": "..\\..\\AppData\\Local\\Temp\\9acc7d93-b574-4ca2-adbe-47db66ed4ff5_frmAddBundle_BundleBookItem_recommended.zip.ff5\\frmAddBundle.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\AppData\\Local\\Temp\\9acc7d93-b574-4ca2-adbe-47db66ed4ff5_frmAddBundle_BundleBookItem_recommended.zip.ff5\\frmAddBundle.cs",
-              "RelativeToolTip": "..\\..\\AppData\\Local\\Temp\\9acc7d93-b574-4ca2-adbe-47db66ed4ff5_frmAddBundle_BundleBookItem_recommended.zip.ff5\\frmAddBundle.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T19:31:26.066Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "frmAddBundle.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmAddBundle.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBundle.cs",
               "RelativeDocumentMoniker": "frmAddBundle.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmAddBundle.cs",
-              "RelativeToolTip": "frmAddBundle.cs",
-              "ViewState": "AgIAAIMDAAAAAAAAAAAwwKQDAAATAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBundle.cs*",
+              "RelativeToolTip": "frmAddBundle.cs*",
+              "ViewState": "AgIAABIDAAAAAAAAAAAAAKUDAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-15T19:15:02.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "frmBundles.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundles.cs",
-              "RelativeDocumentMoniker": "frmBundles.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundles.cs",
-              "RelativeToolTip": "frmBundles.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAcwBcBAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-15T18:08:21.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "frmBundleDetails.cs",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundleDetails.cs",
-              "RelativeDocumentMoniker": "frmBundleDetails.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundleDetails.cs",
-              "RelativeToolTip": "frmBundleDetails.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAIwH4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T17:33:29.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "frmBundleDetails.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundleDetails.cs",
-              "RelativeDocumentMoniker": "frmBundleDetails.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundleDetails.cs [Design]",
-              "RelativeToolTip": "frmBundleDetails.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T17:33:24.954Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "frmBundles.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundles.cs",
-              "RelativeDocumentMoniker": "frmBundles.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundles.cs [Design]",
-              "RelativeToolTip": "frmBundles.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T19:48:47.404Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "frmLog.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmLog.cs",
-              "RelativeDocumentMoniker": "frmLog.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\repos\\pi-ninelivesbooks\\frmLog.cs [Design]",
-              "RelativeToolTip": "..\\repos\\pi-ninelivesbooks\\frmLog.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T19:02:26.24Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "frmAddBook.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmAddBook.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBook.cs",
               "RelativeDocumentMoniker": "frmAddBook.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmAddBook.cs [Design]",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBook.cs [Design]",
               "RelativeToolTip": "frmAddBook.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-12T17:25:08.208Z",
@@ -315,15 +161,190 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 3,
+              "Title": "frmRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmRegistration.cs",
+              "RelativeDocumentMoniker": "frmRegistration.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmRegistration.cs",
+              "RelativeToolTip": "frmRegistration.cs",
+              "ViewState": "AgIAAB8BAAAAAAAAAAAowEQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T18:59:48.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmBundles.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundles.cs",
+              "RelativeDocumentMoniker": "frmBundles.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundles.cs [Design]",
+              "RelativeToolTip": "frmBundles.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T19:48:47.404Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmBundles.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundles.cs",
+              "RelativeDocumentMoniker": "frmBundles.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundles.cs",
+              "RelativeToolTip": "frmBundles.cs",
+              "ViewState": "AgIAAKkBAAAAAAAAAAAwwOgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T18:08:21.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "frmAddBundle.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmAddBundle.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBundle.cs",
               "RelativeDocumentMoniker": "frmAddBundle.cs",
-              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmAddBundle.cs [Design]",
-              "RelativeToolTip": "frmAddBundle.cs [Design]",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBundle.cs [Design]*",
+              "RelativeToolTip": "frmAddBundle.cs [Design]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-11T19:38:06.239Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmAddBook.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBook.cs",
+              "RelativeDocumentMoniker": "frmAddBook.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmAddBook.cs",
+              "RelativeToolTip": "frmAddBook.cs",
+              "ViewState": "AgIAAOwDAAAAAAAAAAAIwAAEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:49:31.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "frmPrincipal.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmPrincipal.cs",
+              "RelativeDocumentMoniker": "frmPrincipal.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmPrincipal.cs [Design]",
+              "RelativeToolTip": "frmPrincipal.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:03:51.486Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "frmLog.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLog.cs",
+              "RelativeDocumentMoniker": "frmLog.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLog.cs [Design]",
+              "RelativeToolTip": "frmLog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:02:26.24Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "frmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLogin.cs",
+              "RelativeDocumentMoniker": "frmLogin.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLogin.cs",
+              "RelativeToolTip": "frmLogin.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowJcAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T18:59:28.996Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LogHelper.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\LogHelper.cs",
+              "RelativeDocumentMoniker": "LogHelper.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\LogHelper.cs",
+              "RelativeToolTip": "LogHelper.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAEwBQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:47:12.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "frmLogin.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLogin.Designer.cs",
+              "RelativeDocumentMoniker": "frmLogin.Designer.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLogin.Designer.cs",
+              "RelativeToolTip": "frmLogin.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T18:59:35.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "frmLog.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLog.cs",
+              "RelativeDocumentMoniker": "frmLog.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLog.cs",
+              "RelativeToolTip": "frmLog.cs",
+              "ViewState": "AgIAAFIBAAAAAAAAAAAYwGQBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:03:19.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "frmPrincipal.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmPrincipal.cs",
+              "RelativeDocumentMoniker": "frmPrincipal.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmPrincipal.cs",
+              "RelativeToolTip": "frmPrincipal.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAEwJQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:03:54.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLogin.cs",
+              "RelativeDocumentMoniker": "frmLogin.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmLogin.cs [Design]",
+              "RelativeToolTip": "frmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T19:27:51.084Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "frmBundleDetails.cs",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundleDetails.cs",
+              "RelativeDocumentMoniker": "frmBundleDetails.cs",
+              "ToolTip": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundleDetails.cs",
+              "RelativeToolTip": "frmBundleDetails.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAIwH4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T17:33:29.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "frmBundleDetails.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\funher.asleite\\source\\repos\\pininelivesbooks\\frmBundleDetails.cs",
+              "RelativeDocumentMoniker": "frmBundleDetails.cs",
+              "ToolTip": "C:\\Users\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundleDetails.cs [Design]",
+              "RelativeToolTip": "..\\..\\..\\..\\rafael.rbrazao\\source\\pi-ninelivesbooks\\frmBundleDetails.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T17:33:24.954Z"
             }
           ]
         },

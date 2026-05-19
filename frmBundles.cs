@@ -477,6 +477,16 @@ namespace ninelivesbooks
                 cmd.Parameters.AddWithValue("@bundle_id", bundleId);
                 cmd.ExecuteNonQuery();
             }
+
+            LogHelper.RegistrarLogTrans(
+                       conn,
+                       transaction,
+                       "BUNDLE",
+                       _selectedBundleId,
+                       "DELETE",
+                       $"Bundle '{_selectedBundleId}' deleted"
+                   );
+
         }
     }
 }

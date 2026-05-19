@@ -55,9 +55,16 @@ namespace ninelivesbooks
 
         public static class Sessao
         {
-            public static int User_Id { get; set; }
+            public static string User_Id { get; set; }
             public static string Used_Name { get; set; }
             public static string User_Role { get; set; }
+
+            public static void Logout()
+            {
+                User_Id = null;
+                User_Role = null;
+            }
+
         }
 
 
@@ -118,7 +125,7 @@ namespace ninelivesbooks
 
 
                 string storedHash = null;
-                int user_Id = 0;
+                string user_Id = null;
                 string user_Name = null;
                 string user_Role = null;
 
@@ -142,7 +149,7 @@ namespace ninelivesbooks
 
                         if (reader.Read())
                         {
-                            user_Id = reader.GetInt32("user_id");
+                            user_Id = reader.GetString("user_id");
                             user_Name = reader.GetString("user_name");
                             storedHash = reader.GetString("user_password_hash");
                             user_Role = reader.GetString("user_role");

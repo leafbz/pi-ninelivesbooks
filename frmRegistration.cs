@@ -58,16 +58,36 @@ namespace ninelivesbooks
                 btnQuit.Visible = false;
             }
 
-            if (Sessao.User_Role == "Adminstrator") 
+            if (Sessao.User_Role == "Administrator")
             {
-              btnRegister.Visible = false;
+                btnRegister.Visible = false;
             }
 
             if (Sessao.User_Role == "Administrator")
             {
                 cbRole.Items.Add("Administrator");
             }
+        }
+             private string GenerateNextUserId()
+        {
+            string query = @"
+        SELECT MAX(CAST(SUBSTRING(user_id, 4) AS UNSIGNED))
+        FROM usuario
+        WHERE user_id LIKE 'NLU%'";
 
+            using (var conn = Db.GetConnection())
+            using (var cmd = new MySqlCommand(query, conn))
+            {
+                conn.Open();
+
+                object result = cmd.ExecuteScalar();
+
+                if (result == null || result == DBNull.Value)
+                    return "NLU0001";
+
+                int number = Convert.ToInt32(result) + 1;
+                return "NLU" + number.ToString("D4");
+            }
         }
         private void btnRegister_Click(object sender, EventArgs e)
         {
@@ -128,6 +148,19 @@ namespace ninelivesbooks
                         "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                MySqlCommand checkCmd = new MySqlCommand("SELECT COUNT(*) FROM usuario", Conn);
+                int totalUsers = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                if (totalUsers == 0)
+                {
+
+                    role = "Administrator";
+                }
+                else
+                {
+                    role = cbRole.Text.Trim();
+                }
+                string UserId = GenerateNextUserId();
 
                 cmd.CommandText = "INSERT INTO usuario(user_name, user_role, user_email, user_status, user_password_hash, user_created_at)" +
                     "VALUES(@user_name, @user_role, @user_email, @user_status, @user_password_hash, @user_created_at)";
@@ -270,6 +303,7 @@ namespace ninelivesbooks
                     MessageBox.Show("Invalid status. Use only Administrator or Staff.");
                     return;
                 }
+                string UserId = GenerateNextUserId();
 
                 cmd.CommandText = "INSERT INTO usuario(user_name, user_role, user_email, user_status, user_password_hash, user_created_at)" +
                 "VALUES(@user_name, @user_role, @user_email, @user_status, @user_password_hash, @user_created_at)";
@@ -281,6 +315,13 @@ namespace ninelivesbooks
                 cmd.Parameters.AddWithValue("@user_created_at", hoje);
 
                 cmd.ExecuteNonQuery();
+
+                LogHelper.RegistrarLog(
+                    "USER",
+                    UserId,
+                    "CREATE_EMPLOYEE",
+                    $"Employee '{txtName.Text}' created"
+                );
 
                 MessageBox.Show("New Employee added.");
 

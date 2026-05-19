@@ -577,6 +577,21 @@ namespace ninelivesbooks
                 else
                     UpdateInventoryBook(book, conn, transaction);
             }
+
+            string action = _mode == BookFormMode.Add ? "CREATE" :
+                         _mode == BookFormMode.Edit ? "UPDATE" :
+                         _mode == BookFormMode.AddCopy ? "CREATE COPY" :
+                         "UNKNOWN";
+
+            LogHelper.RegistrarLogTrans(
+                conn,
+                transaction,
+                "BOOK",
+                book.BookId,
+                action,
+                $"Book {action}");
+
+
         }
 
         private void InsertInventoryBook(ClassBook book, MySqlConnection conn, MySqlTransaction transaction)
@@ -1000,6 +1015,14 @@ namespace ninelivesbooks
 
                         if (rows > 0)
                         {
+
+                            LogHelper.RegistrarLog(
+                                 "BOOK",
+                                 _currentBookId,
+                                 "DELETE",
+                                 $"Book '{_currentBookId}' deleted"
+                             );
+
                             MessageBox.Show("Book deleted successfully.");
 
                             // Return to books screen

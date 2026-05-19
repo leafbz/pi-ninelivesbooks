@@ -618,7 +618,16 @@ namespace ninelivesbooks
                     cmd.Parameters.AddWithValue("@book_id", book.BookId);
                     cmd.ExecuteNonQuery();
                 }
+
             }
+            LogHelper.RegistrarLogTrans(
+       conn,
+       transaction,
+       "BUNDLE",
+       bundleId,
+       "CREATE",
+       $"Bundle '{txtBundleName.Text}' created"
+   );
         }
 
         private void MarkBundledBooksAsUnavailable(MySqlConnection conn, MySqlTransaction transaction)
@@ -905,6 +914,9 @@ namespace ninelivesbooks
         
                 cmd.ExecuteNonQuery();
             }
+
+           
+
         }
 
         private void ReplaceBundleBooks(string bundleId, MySqlConnection conn, MySqlTransaction transaction)
@@ -918,9 +930,19 @@ namespace ninelivesbooks
                 deleteCmd.Parameters.AddWithValue("@bundle_id", bundleId);
                 deleteCmd.ExecuteNonQuery();
             }
-        
+
+           
+            LogHelper.RegistrarLogTrans(
+                   conn,
+                   transaction,
+                   "BUNDLE",
+                   bundleId,
+                   "UPDATE",
+                   $"Bundle '{txtBundleName.Text}' updated"
+               );
             InsertBundleBooks(bundleId, conn, transaction);
         }
+
 
         #region Round Buttons
         private void RoundButton(object sender)
