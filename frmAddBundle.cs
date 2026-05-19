@@ -35,8 +35,6 @@ namespace ninelivesbooks
 
             SetupListViews();
             WireEvents();
-
-            this.Load += frmAddBundle_Load;
         }
 
         public frmAddBundle(string bundleId)
@@ -130,6 +128,7 @@ namespace ninelivesbooks
             listView.GridLines = true;
             listView.HideSelection = false;
             listView.OwnerDraw = true;
+            listView.HotTracking = false;
             listView.HoverSelection = false;
             listView.Activation = ItemActivation.Standard;
 
@@ -174,8 +173,13 @@ namespace ninelivesbooks
                 INNER JOIN book_titles bt
                     ON b.title_id_in_book = bt.title_id
                 WHERE b.book_status = 'AVAILABLE'
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM bundle_book bb
+                    WHERE bb.book_id_in_bundle_book = b.book_id
+                )
                 ORDER BY bt.title ASC, b.book_id ASC;";
-
+                
             try
             {
                 using (var conn = Db.GetConnection())
@@ -438,8 +442,20 @@ namespace ninelivesbooks
                         {
                             if (_isEditMode)
                             {
+                                List<string> oldBookIds = GetCurrentBundleBookIds(_currentBundleId, conn, transaction);
+                            
                                 UpdateBundle(_currentBundleId, conn, transaction);
                                 ReplaceBundleBooks(_currentBundleId, conn, transaction);
+                            
+                                List<string> newBookIds = bundleBooks.Select(b => b.BookId).ToList();
+                            
+                                List<string> removedBookIds = oldBookIds
+                                    .Except(newBookIds)
+                                    .ToList();
+                            
+                                RestoreRemovedBooksToAvailable(removedBookIds, conn, transaction);
+                            
+                                MarkBundledBooksAsUnavailable(conn, transaction);
                             }
                             else
                             {
@@ -460,8 +476,6 @@ namespace ninelivesbooks
         
                             if (_isEditMode)
                             {
-                                MessageBox.Show("Bundle updated successfully.");
-                            
                                 frmPrincipal.PrincipalInstance.AbrirForm(
                                     new FrmBundleDetails(_currentBundleId)
                                 );
@@ -764,13 +778,12 @@ namespace ninelivesbooks
                 textColor = Color.Black;
                 backColor = Color.FromArgb(255, 215, 160);
             }
-            else
+            else if ((e.ItemState & ListViewItemStates.Hot) != 0)
             {
+                backColor = Color.FromArgb(255, 230, 190);
                 textColor = e.ColumnIndex == 0
                     ? Color.FromArgb(0, 80, 60)
                     : Color.FromArgb(20, 60, 40);
-
-                backColor = (e.ItemIndex % 2 == 0) ? rowEven : rowOdd;
             }
 
             using (SolidBrush back = new SolidBrush(backColor))
