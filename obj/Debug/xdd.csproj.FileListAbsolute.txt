@@ -1,0 +1,16 @@
+C:\Users\rafael.rbrazao\source\repos\xdd\bin\Debug\xdd.exe.config
+C:\Users\rafael.rbrazao\source\repos\xdd\bin\Debug\xdd.exe
+C:\Users\rafael.rbrazao\source\repos\xdd\bin\Debug\xdd.pdb
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.csproj.AssemblyReference.cache
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.Properties.Resources.resources
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.csproj.GenerateResource.cache
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.csproj.CoreCompileInputs.cache
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.exe
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.pdb
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.exe.config
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.frmPrincipal.resources
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.Form2.resources
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.Form3.resources
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.Form4.resources
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.UC_LIVRO.resources
+C:\Users\rafael.rbrazao\source\repos\xdd\obj\Debug\xdd.FormLivro.resources
