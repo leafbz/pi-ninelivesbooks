@@ -10,9 +10,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static xdd.frmLogin;
+using static ninelivesbooks.frmLogin;
 
-namespace xdd
+namespace ninelivesbooks
 {
     public partial class frmRegistration : Form
     {

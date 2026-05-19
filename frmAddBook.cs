@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 
-namespace xdd
+namespace ninelivesbooks
 {
     public partial class frmAddBook : Form
     {

@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.IO;
 
-namespace xdd
+namespace ninelivesbooks
 {
     public class ClassBook
     {
