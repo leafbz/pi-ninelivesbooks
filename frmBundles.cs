@@ -425,9 +425,13 @@ namespace ninelivesbooks
                     }
                 }
 
+                string soldBundleId = _selectedBundleId;
+
                 MessageBox.Show("Bundle and books marked as SOLD.");
+                
                 LoadBundles();
-                LoadPreview(_selectedBundleId);
+                ReselectBundleRow(soldBundleId);
+                LoadPreview(soldBundleId);
             }
             catch (Exception ex)
             {
@@ -444,12 +448,37 @@ namespace ninelivesbooks
                 SET
                     bk.book_status = 'AVAILABLE',
                     bk.reason_status = NULL
-                WHERE bb.bundle_id_in_bundle_book = @bundle_id;";
+                WHERE bb.bundle_id_in_bundle_book = @bundle_id
+                  AND bk.book_status <> 'SOLD';";
 
             using (var cmd = new MySqlCommand(sql, conn, transaction))
             {
                 cmd.Parameters.AddWithValue("@bundle_id", bundleId);
                 cmd.ExecuteNonQuery();
+            }
+        }
+        
+        private void ReselectBundleRow(string bundleId)
+        {
+            if (string.IsNullOrWhiteSpace(bundleId))
+                return;
+        
+            foreach (DataGridViewRow row in dgvBundles.Rows)
+            {
+                if (row.Cells["ID"].Value == null)
+                    continue;
+        
+                if (row.Cells["ID"].Value.ToString() == bundleId)
+                {
+                    dgvBundles.ClearSelection();
+                    row.Selected = true;
+                    dgvBundles.CurrentCell = row.Cells["ID"];
+        
+                    _selectedBundleId = bundleId;
+                    _selectedBundleStatus = row.Cells["Status"].Value?.ToString();
+        
+                    return;
+                }
             }
         }
 
@@ -484,7 +513,7 @@ namespace ninelivesbooks
                        "BUNDLE",
                        _selectedBundleId,
                        "DELETE",
-                       $"Bundle '{_selectedBundleId}' deleted"
+                       $"Bundle '{bundleId}' deleted"
                    );
 
         }
