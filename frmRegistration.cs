@@ -40,8 +40,6 @@ namespace ninelivesbooks
             return $"{iterations}.{Convert.ToBase64String(salt)}.{Convert.ToBase64String(hash)}";
         }
 
-        MySqlConnection Conn;
-        string data_source = "datasource=localhost; username=root; password=; database=ninelivebooks";
         public frmRegistration()
         {
             InitializeComponent();
@@ -89,118 +87,175 @@ namespace ninelivesbooks
                 return "NLU" + number.ToString("D4");
             }
         }
+
+        
         private void btnRegister_Click(object sender, EventArgs e)
         {
             DateTime hoje = DateTime.Now;
+        
             try
             {
-                if (string.IsNullOrEmpty(txtName.Text.Trim()) || string.IsNullOrEmpty(txtEmail.Text.Trim()) || string.IsNullOrEmpty(cbRole.Text.Trim()) ||
-                    string.IsNullOrEmpty(txtPassword.Text.Trim()) || string.IsNullOrEmpty(cbStatus.Text.Trim()) ||
-                    string.IsNullOrEmpty(txtConfirmPassword.Text.Trim()))
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(cbRole.Text) ||
+                    string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                    string.IsNullOrWhiteSpace(cbStatus.Text) ||
+                    string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
                 {
-                    MessageBox.Show("Please fill in all required fields.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "Please fill in all required fields.",
+                        "Validation",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     return;
                 }
+        
                 if (txtPassword.Text.Trim().Length < 6 || txtPassword.Text.Trim().Length > 10)
                 {
-                    MessageBox.Show("Password require a minimum number of characters.");
+                    MessageBox.Show("Password must have between 6 and 10 characters.");
                     return;
                 }
-                Conn = new MySqlConnection(data_source);
-
-                Conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand { Connection = Conn };
-                cmd.Prepare();
-
-
+        
                 if (txtPassword.Text != txtConfirmPassword.Text)
                 {
-                    MessageBox.Show("Passwords do not match.", "Validation",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "Passwords do not match.",
+                        "Validation",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     return;
                 }
-                string passwordHash = Hashpassword(txtPassword.Text.Trim());
-
-
+        
                 string status = cbStatus.Text.Trim();
-
-                if (status != "Ative" && status != "Inactive")
+        
+                if (status != "Active" && status != "Inactive")
                 {
                     MessageBox.Show("Invalid status. Use only Active or Inactive.");
                     return;
                 }
-
-
+        
                 string role = cbRole.Text.Trim();
-
+        
                 if (role != "Administrator" && role != "Staff")
                 {
-                    MessageBox.Show("Invalid status. Use only Administrator or Staff.");
+                    MessageBox.Show("Invalid role. Use only Administrator or Staff.");
                     return;
                 }
-
+        
                 string email = txtEmail.Text.Trim().ToLower();
-
+        
                 if (!email.EndsWith("@gmail.com"))
                 {
-                    MessageBox.Show("Only Gmail accounts are allowed. Use @gmail.com",
-                        "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "Only Gmail accounts are allowed. Use @gmail.com",
+                        "Validation",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     return;
                 }
-                MySqlCommand checkCmd = new MySqlCommand("SELECT COUNT(*) FROM usuario", Conn);
-                int totalUsers = Convert.ToInt32(checkCmd.ExecuteScalar());
-
-                if (totalUsers == 0)
+        
+                using (MySqlConnection conn = Db.GetConnection())
                 {
-
-                    role = "Administrator";
+                    conn.Open();
+        
+                    string checkDuplicateSql = @"
+                        SELECT COUNT(*)
+                        FROM usuario
+                        WHERE user_email = @user_email
+                           OR user_name = @user_name;";
+        
+                    using (MySqlCommand checkDuplicateCmd = new MySqlCommand(checkDuplicateSql, conn))
+                    {
+                        checkDuplicateCmd.Parameters.AddWithValue("@user_email", email);
+                        checkDuplicateCmd.Parameters.AddWithValue("@user_name", txtName.Text.Trim());
+        
+                        int duplicateCount = Convert.ToInt32(checkDuplicateCmd.ExecuteScalar());
+        
+                        if (duplicateCount > 0)
+                        {
+                            MessageBox.Show("This username or email is already registered.");
+                            return;
+                        }
+                    }
+        
+                    string checkUsersSql = "SELECT COUNT(*) FROM usuario;";
+        
+                    using (MySqlCommand checkUsersCmd = new MySqlCommand(checkUsersSql, conn))
+                    {
+                        int totalUsers = Convert.ToInt32(checkUsersCmd.ExecuteScalar());
+        
+                        if (totalUsers == 0)
+                            role = "Administrator";
+                    }
+        
+                    string userId = GenerateNextUserId();
+                    string passwordHash = Hashpassword(txtPassword.Text.Trim());
+        
+                    string insertSql = @"
+                        INSERT INTO usuario
+                        (
+                            user_id,
+                            user_name,
+                            user_role,
+                            user_email,
+                            user_status,
+                            user_password_hash,
+                            user_created_at
+                        )
+                        VALUES
+                        (
+                            @user_id,
+                            @user_name,
+                            @user_role,
+                            @user_email,
+                            @user_status,
+                            @user_password_hash,
+                            @user_created_at
+                        );";
+        
+                    using (MySqlCommand cmd = new MySqlCommand(insertSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+                        cmd.Parameters.AddWithValue("@user_name", txtName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@user_role", role);
+                        cmd.Parameters.AddWithValue("@user_email", email);
+                        cmd.Parameters.AddWithValue("@user_status", status);
+                        cmd.Parameters.AddWithValue("@user_password_hash", passwordHash);
+                        cmd.Parameters.AddWithValue("@user_created_at", hoje);
+        
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-                else
-                {
-                    role = cbRole.Text.Trim();
-                }
-                string UserId = GenerateNextUserId();
-
-                cmd.CommandText = "INSERT INTO usuario(user_name, user_role, user_email, user_status, user_password_hash, user_created_at)" +
-                    "VALUES(@user_name, @user_role, @user_email, @user_status, @user_password_hash, @user_created_at)";
-                cmd.Parameters.AddWithValue("@user_name", txtName.Text.Trim());
-                cmd.Parameters.AddWithValue("@user_role", cbRole.Text.Trim());
-                cmd.Parameters.AddWithValue("@user_email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@user_status", cbStatus.Text.Trim());
-                cmd.Parameters.AddWithValue("user_password_hash", passwordHash);
-                cmd.Parameters.AddWithValue("@user_created_at", hoje);
-
-
-                cmd.ExecuteNonQuery();
-
+        
                 MessageBox.Show("Registration was successful.");
-
+        
                 frmLogin form = new frmLogin();
                 form.Show();
                 this.Close();
             }
-
             catch (MySqlException ex)
             {
-                MessageBox.Show($"An error has occurred. Please try again. + {ex.Number} : {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    $"An error has occurred. Please try again. {ex.Number}: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Occurred: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Occurred: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
-
-            finally
-            {
-                if (Conn != null && Conn.State == ConnectionState.Open)
-                {
-                    Conn.Close();
-                }
-            }
-
         }
+
         private void lblShowPassword_Click(object sender, EventArgs e)
         {
             if (VisiblePassword)
@@ -217,10 +272,10 @@ namespace ninelivesbooks
 
         private void lblShowConfirmPassword_Click(object sender, EventArgs e)
         {
-            if (VisiblePassword)
+            if (VisibleConfirmPassword)
             {
                 txtConfirmPassword.UseSystemPasswordChar = true;
-                VisiblePassword = false;
+                VisibleConfirmPassword = false;
             }
             else
             {
@@ -264,86 +319,143 @@ namespace ninelivesbooks
         private void btnAdd_Click(object sender, EventArgs e)
         {
             DateTime hoje = DateTime.Now;
+        
             try
             {
-                if (string.IsNullOrEmpty(txtName.Text.Trim()) || string.IsNullOrEmpty(txtEmail.Text.Trim()) || string.IsNullOrEmpty(cbRole.Text.Trim()) ||
-                string.IsNullOrEmpty(txtPassword.Text.Trim()) || string.IsNullOrEmpty(cbStatus.Text.Trim()) ||
-                string.IsNullOrEmpty(txtConfirmPassword.Text.Trim()))
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(cbRole.Text) ||
+                    string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                    string.IsNullOrWhiteSpace(cbStatus.Text) ||
+                    string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
                 {
-                    MessageBox.Show("Please fill in all required fields.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "Please fill in all required fields.",
+                        "Validation",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     return;
                 }
-                Conn = new MySqlConnection(data_source);
-
-                Conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand { Connection = Conn };
-                cmd.Prepare();
-
+        
                 if (txtPassword.Text != txtConfirmPassword.Text)
                 {
-                    MessageBox.Show("Passwords do not match.", "Validation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "Passwords do not match.",
+                        "Validation",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
                     return;
                 }
-                string passwordHash = Hashpassword(txtPassword.Text.Trim());
-
+        
                 string status = cbStatus.Text.Trim();
-
-                if (status != "Ative" && status != "Inactive")
+        
+                if (status != "Active" && status != "Inactive")
                 {
                     MessageBox.Show("Invalid status. Use only Active or Inactive.");
                     return;
                 }
-
+        
                 string role = cbRole.Text.Trim();
-
+        
                 if (role != "Administrator" && role != "Staff")
                 {
-                    MessageBox.Show("Invalid status. Use only Administrator or Staff.");
+                    MessageBox.Show("Invalid role. Use only Administrator or Staff.");
                     return;
                 }
-                string UserId = GenerateNextUserId();
-
-                cmd.CommandText = "INSERT INTO usuario(user_name, user_role, user_email, user_status, user_password_hash, user_created_at)" +
-                "VALUES(@user_name, @user_role, @user_email, @user_status, @user_password_hash, @user_created_at)";
-                cmd.Parameters.AddWithValue("@user_name", txtName.Text.Trim());
-                cmd.Parameters.AddWithValue("@user_role", cbRole.Text.Trim());
-                cmd.Parameters.AddWithValue("@user_email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@user_status", cbStatus.Text.Trim());
-                cmd.Parameters.AddWithValue("user_password_hash", passwordHash);
-                cmd.Parameters.AddWithValue("@user_created_at", hoje);
-
-                cmd.ExecuteNonQuery();
-
-                LogHelper.RegistrarLog(
-                    "USER",
-                    UserId,
-                    "CREATE_EMPLOYEE",
-                    $"Employee '{txtName.Text}' created"
-                );
-
-                MessageBox.Show("New Employee added.");
-
+        
+                string email = txtEmail.Text.Trim().ToLower();
+        
+                using (MySqlConnection conn = Db.GetConnection())
+                {
+                    conn.Open();
+        
+                    string checkDuplicateSql = @"
+                        SELECT COUNT(*)
+                        FROM usuario
+                        WHERE user_email = @user_email
+                           OR user_name = @user_name;";
+        
+                    using (MySqlCommand checkDuplicateCmd = new MySqlCommand(checkDuplicateSql, conn))
+                    {
+                        checkDuplicateCmd.Parameters.AddWithValue("@user_email", email);
+                        checkDuplicateCmd.Parameters.AddWithValue("@user_name", txtName.Text.Trim());
+        
+                        int duplicateCount = Convert.ToInt32(checkDuplicateCmd.ExecuteScalar());
+        
+                        if (duplicateCount > 0)
+                        {
+                            MessageBox.Show("This username or email is already registered.");
+                            return;
+                        }
+                    }
+        
+                    string userId = GenerateNextUserId();
+                    string passwordHash = Hashpassword(txtPassword.Text.Trim());
+        
+                    string insertSql = @"
+                        INSERT INTO usuario
+                        (
+                            user_id,
+                            user_name,
+                            user_role,
+                            user_email,
+                            user_status,
+                            user_password_hash,
+                            user_created_at
+                        )
+                        VALUES
+                        (
+                            @user_id,
+                            @user_name,
+                            @user_role,
+                            @user_email,
+                            @user_status,
+                            @user_password_hash,
+                            @user_created_at
+                        );";
+        
+                    using (MySqlCommand cmd = new MySqlCommand(insertSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@user_id", userId);
+                        cmd.Parameters.AddWithValue("@user_name", txtName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@user_role", role);
+                        cmd.Parameters.AddWithValue("@user_email", email);
+                        cmd.Parameters.AddWithValue("@user_status", status);
+                        cmd.Parameters.AddWithValue("@user_password_hash", passwordHash);
+                        cmd.Parameters.AddWithValue("@user_created_at", hoje);
+        
+                        cmd.ExecuteNonQuery();
+                    }
+        
+                    LogHelper.RegistrarLog(
+                        "USER",
+                        userId,
+                        "CREATE_EMPLOYEE",
+                        $"Employee '{txtName.Text}' created"
+                    );
+                }
+        
+                MessageBox.Show("New employee added.");
             }
-
             catch (MySqlException ex)
             {
-                MessageBox.Show($"An error has occurred. Please try again. + {ex.Number} : {ex.Message}",
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    $"An error has occurred. Please try again. {ex.Number}: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Occurred: " + ex.Message,
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            finally
-            {
-                if (Conn != null && Conn.State == ConnectionState.Open)
-                {
-                    Conn.Close();
-                }
+                MessageBox.Show(
+                    "Occurred: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 
