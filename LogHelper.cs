@@ -76,22 +76,17 @@ namespace ninelivesbooks
             string description)
         {
             string sql = @"
-        INSERT INTO inventory
-        (inventory_log_id, entity_type, entity_id, inventory_action,
-         new_value, user_id_in_inventory)
-        VALUES
-        (@log_id, @entity_type, @entity_id, @action,
-         @new_value, @user_id)";
-
+                INSERT INTO logs
+                (entity_type, entity_id, action, description, created_at)
+                VALUES
+                (@entity_type, @entity_id, @action, @description, NOW());";
+        
             using (MySqlCommand cmd = new MySqlCommand(sql, conn, transaction))
             {
-                cmd.Parameters.AddWithValue("@log_id", GenerateNextLogId());
                 cmd.Parameters.AddWithValue("@entity_type", entityType);
                 cmd.Parameters.AddWithValue("@entity_id", entityId);
                 cmd.Parameters.AddWithValue("@action", action);
-                cmd.Parameters.AddWithValue("@new_value", description);
-                cmd.Parameters.AddWithValue("@user_id", Sessao.User_Id);
-
+                cmd.Parameters.AddWithValue("@description", description);
                 cmd.ExecuteNonQuery();
             }
         }
