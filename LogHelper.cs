@@ -11,8 +11,6 @@ namespace ninelivesbooks
     internal static class LogHelper
     {
 
-        private static string data_source = "datasource=localhost; username=root; password=; database=ninelivebooks";
-
         public static string GenerateNextLogId()
         {
             string query = @"
@@ -20,7 +18,7 @@ namespace ninelivesbooks
                 FROM inventory
                 WHERE inventory_log_id LIKE 'NLL%'";
 
-            using (MySqlConnection conn = new MySqlConnection(data_source))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -42,7 +40,7 @@ namespace ninelivesbooks
             string action,
             string description)
         {
-            using (MySqlConnection conn = new MySqlConnection(data_source))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
 
