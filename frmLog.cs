@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using static ninelivesbooks.frmLogin;
 using static xdd.frmLog;
 
-namespace xdd
+namespace ninelivesbooks
 {
     public partial class frmLog : Form
     {
