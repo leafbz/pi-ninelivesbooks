@@ -25,7 +25,6 @@ namespace ninelivesbooks
         Color gridColor = Color.FromArgb(255, 215, 160);
 
         MySqlConnection conn;
-        string data_source = "datasource=localhost; username=root; password=; database=ninelivebooks";
         private void lstUser_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             using (SolidBrush back = new SolidBrush(headerBack))
@@ -263,7 +262,7 @@ namespace ninelivesbooks
 
             string sql = "SELECT user_id, user_name, user_email, user_role, user_status, user_created_at FROM usuario";
 
-            using (MySqlConnection conn = new MySqlConnection(data_source))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -313,7 +312,7 @@ namespace ninelivesbooks
         WHERE user_id_in_inventory = @user_id
         ORDER BY inventory_log_created_at DESC";
 
-            using (MySqlConnection conn = new MySqlConnection(data_source))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
 
@@ -378,7 +377,7 @@ namespace ninelivesbooks
         {
             lista.Items.Clear();
 
-            using (MySqlConnection conn = new MySqlConnection(data_source))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
 
