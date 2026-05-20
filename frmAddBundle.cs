@@ -46,7 +46,6 @@ namespace ninelivesbooks
         
             SetupListViews();
             WireEvents();
-            this.Load += frmAddBundle_Load;
         }
 
         private void WireEvents()
