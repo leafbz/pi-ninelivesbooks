@@ -368,23 +368,25 @@ namespace ninelivesbooks
                 MessageBox.Show("This bundle is already sold.");
                 return;
             }
-
+        
             DialogResult result = MessageBox.Show(
                 "Mark this bundle as SOLD?\n\nAll books inside this bundle will also be marked as SOLD.",
                 "Confirm Sale",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
-
+        
             if (result != DialogResult.Yes)
                 return;
-
+        
+            string soldBundleId = _selectedBundleId;
+        
             try
             {
                 using (var conn = Db.GetConnection())
                 {
                     conn.Open();
-
+        
                     using (var transaction = conn.BeginTransaction())
                     {
                         try
@@ -393,13 +395,13 @@ namespace ninelivesbooks
                                 UPDATE bundle
                                 SET bundle_status = 'SOLD'
                                 WHERE bundle_id = @bundle_id;";
-
+        
                             using (var cmd = new MySqlCommand(updateBundleSql, conn, transaction))
                             {
-                                cmd.Parameters.AddWithValue("@bundle_id", _selectedBundleId);
+                                cmd.Parameters.AddWithValue("@bundle_id", soldBundleId);
                                 cmd.ExecuteNonQuery();
                             }
-
+        
                             string updateBooksSql = @"
                                 UPDATE book bk
                                 INNER JOIN bundle_book bb
@@ -408,13 +410,13 @@ namespace ninelivesbooks
                                     bk.book_status = 'SOLD',
                                     bk.reason_status = NULL
                                 WHERE bb.bundle_id_in_bundle_book = @bundle_id;";
-
+        
                             using (var cmd = new MySqlCommand(updateBooksSql, conn, transaction))
                             {
-                                cmd.Parameters.AddWithValue("@bundle_id", _selectedBundleId);
+                                cmd.Parameters.AddWithValue("@bundle_id", soldBundleId);
                                 cmd.ExecuteNonQuery();
                             }
-
+        
                             transaction.Commit();
                         }
                         catch
@@ -424,11 +426,9 @@ namespace ninelivesbooks
                         }
                     }
                 }
-
-                string soldBundleId = _selectedBundleId;
-
+        
                 MessageBox.Show("Bundle and books marked as SOLD.");
-                
+        
                 LoadBundles();
                 ReselectBundleRow(soldBundleId);
                 LoadPreview(soldBundleId);
