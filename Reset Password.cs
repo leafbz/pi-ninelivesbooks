@@ -45,7 +45,7 @@ namespace ninelivesbooks
 
         private bool ValidarCodigo(string email, string codigo)
         {
-            using (MySqlConnection conn = new MySqlConnection(conexao))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
 
@@ -62,7 +62,6 @@ namespace ninelivesbooks
                 }
             }
         }
-        private string conexao = "datasource=localhost; username=root; password=; database=ninelivebooks";
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
@@ -128,7 +127,7 @@ namespace ninelivesbooks
         }
         private void SalvarCodigo(string email, string codigo)
         {
-            using (MySqlConnection conn = new MySqlConnection(conexao))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
 
@@ -227,7 +226,7 @@ namespace ninelivesbooks
         }
         private void AtualizarSenha(string email, string passwordHash)
         {
-            using (MySqlConnection conn = new MySqlConnection(conexao))
+            using (MySqlConnection conn = Db.GetConnection())
             {
                 conn.Open();
 
