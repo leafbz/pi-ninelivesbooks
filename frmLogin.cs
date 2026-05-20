@@ -96,90 +96,101 @@ namespace ninelivesbooks
 
         }
 
-        string data_source = "datasource=localhost; username=root; password=; database=ninelivebooks";
-
         private void btnEnter_Click(object sender, EventArgs e)
         {
-
+            string login = txtLogin.Text.Trim();
+            string password = txtPassword.Text;
+        
+            if (txtLogin.Text == "Login" || string.IsNullOrWhiteSpace(txtLogin.Text))
             {
-                string login = txtLogin.Text.Trim();
-                string password = txtPassword.Text;
-
-                if (txtLogin.Text == "Login" || string.IsNullOrWhiteSpace(txtLogin.Text))
-                {
-                    MessageBox.Show("Please enter your username or email.",
-                        "Validation",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (txtPassword.Text == "Password" || string.IsNullOrWhiteSpace(txtPassword.Text))
-                {
-                    MessageBox.Show("Please enter your password.",
-                        "Validation",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
-
-
-                string storedHash = null;
-                string user_Id = null;
-                string user_Name = null;
-                string user_Role = null;
-
-
-                using (MySqlConnection conn = new MySqlConnection(data_source))
-
+                MessageBox.Show(
+                    "Please enter your username or email.",
+                    "Validation",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+        
+            if (txtPassword.Text == "Password" || string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show(
+                    "Please enter your password.",
+                    "Validation",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+        
+            string storedHash = null;
+            string user_Id = null;
+            string user_Name = null;
+            string user_Role = null;
+        
+            try
+            {
+                using (MySqlConnection conn = Db.GetConnection())
                 {
                     conn.Open();
-
-
-                    MySqlCommand cmd = new MySqlCommand(
-                        @"SELECT user_id, user_name, user_role, user_password_hash FROM usuario WHERE user_email = @login OR user_name = @login",
-                        conn
-                    );
-
-                    cmd.Parameters.AddWithValue("@login", txtLogin.Text.Trim());
-
-
-                    using (var reader = cmd.ExecuteReader())
+        
+                    string sql = @"
+                        SELECT 
+                            user_id, 
+                            user_name, 
+                            user_role, 
+                            user_password_hash 
+                        FROM usuario 
+                        WHERE user_email = @login 
+                           OR user_name = @login
+                        LIMIT 1;";
+        
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
                     {
-
-                        if (reader.Read())
+                        cmd.Parameters.AddWithValue("@login", login);
+        
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            user_Id = reader.GetString("user_id");
-                            user_Name = reader.GetString("user_name");
-                            storedHash = reader.GetString("user_password_hash");
-                            user_Role = reader.GetString("user_role");
+                            if (reader.Read())
+                            {
+                                user_Id = reader.GetString("user_id");
+                                user_Name = reader.GetString("user_name");
+                                storedHash = reader.GetString("user_password_hash");
+                                user_Role = reader.GetString("user_role");
+                            }
                         }
-
-                    }
-
-                    if (storedHash == null)
-                    {
-                        MessageBox.Show("The username/email or password is incorrect.");
-                        return;
-                    }
-
-
-                        if (VerifyPassword(password, storedHash))
-                    {
-
-                        Sessao.User_Id = user_Id;
-                        Sessao.Used_Name = user_Name;
-                        Sessao.User_Role = user_Role;
-
-                        frmPrincipal form = new frmPrincipal();
-                        form.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        MessageBox.Show("The username/email or password is incorrect.");
                     }
                 }
+        
+                if (storedHash == null)
+                {
+                    MessageBox.Show("The username/email or password is incorrect.");
+                    return;
+                }
+        
+                if (VerifyPassword(password, storedHash))
+                {
+                    Sessao.User_Id = user_Id;
+                    Sessao.Used_Name = user_Name;
+                    Sessao.User_Role = user_Role;
+        
+                    frmPrincipal form = new frmPrincipal();
+                    form.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("The username/email or password is incorrect.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error trying to login:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
        
