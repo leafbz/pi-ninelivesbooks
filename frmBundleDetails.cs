@@ -319,19 +319,19 @@ namespace ninelivesbooks
                     {
                         try
                         {
-                            string deleteSql = @"
+                            string deleteRelationSql = @"
                                 DELETE FROM bundle_book
                                 WHERE bundle_id_in_bundle_book = @bundleId
                                   AND book_id_in_bundle_book = @bookId;";
         
-                            using (MySqlCommand deleteCmd = new MySqlCommand(deleteSql, con, transaction))
+                            using (MySqlCommand deleteCmd = new MySqlCommand(deleteRelationSql, con, transaction))
                             {
                                 deleteCmd.Parameters.AddWithValue("@bundleId", bundleId);
                                 deleteCmd.Parameters.AddWithValue("@bookId", bookIdSelecionado);
                                 deleteCmd.ExecuteNonQuery();
                             }
         
-                            string updateBookSql = @"
+                            string restoreBookSql = @"
                                 UPDATE book
                                 SET
                                     book_status = 'AVAILABLE',
@@ -339,10 +339,10 @@ namespace ninelivesbooks
                                 WHERE book_id = @bookId
                                   AND book_status <> 'SOLD';";
         
-                            using (MySqlCommand updateCmd = new MySqlCommand(updateBookSql, con, transaction))
+                            using (MySqlCommand restoreCmd = new MySqlCommand(restoreBookSql, con, transaction))
                             {
-                                updateCmd.Parameters.AddWithValue("@bookId", bookIdSelecionado);
-                                updateCmd.ExecuteNonQuery();
+                                restoreCmd.Parameters.AddWithValue("@bookId", bookIdSelecionado);
+                                restoreCmd.ExecuteNonQuery();
                             }
         
                             transaction.Commit();
