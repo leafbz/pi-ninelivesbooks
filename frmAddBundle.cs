@@ -209,7 +209,7 @@ namespace ninelivesbooks
         private void SearchAvailableBooks()
         {
             availableBooks.Clear();
-
+        
             string sql = @"
                 SELECT
                     b.book_id,
@@ -223,6 +223,11 @@ namespace ninelivesbooks
                 INNER JOIN book_titles bt
                     ON b.title_id_in_book = bt.title_id
                 WHERE b.book_status = 'AVAILABLE'
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM bundle_book bb
+                    WHERE bb.book_id_in_bundle_book = b.book_id
+                )
                 AND (
                     bt.title LIKE @q
                     OR bt.author LIKE @q
@@ -231,16 +236,16 @@ namespace ninelivesbooks
                     OR bt.genre LIKE @q
                 )
                 ORDER BY bt.title ASC, b.book_id ASC;";
-
+        
             try
             {
                 using (var conn = Db.GetConnection())
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@q", "%" + txtSearch.Text.Trim() + "%");
-
+        
                     conn.Open();
-
+        
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -249,7 +254,7 @@ namespace ninelivesbooks
                         }
                     }
                 }
-
+        
                 LoadAvailableBooksIntoListView();
             }
             catch (Exception ex)
@@ -926,9 +931,61 @@ namespace ninelivesbooks
         
                 cmd.ExecuteNonQuery();
             }
+        }
 
-           
+        private void RestoreRemovedBooksToAvailable(
+            List<string> removedBookIds,
+            MySqlConnection conn,
+            MySqlTransaction transaction)
+        {
+            if (removedBookIds == null || removedBookIds.Count == 0)
+                return;
+        
+            string sql = @"
+                UPDATE book
+                SET
+                    book_status = 'AVAILABLE',
+                    reason_status = NULL
+                WHERE book_id = @book_id
+                  AND book_status <> 'SOLD';";
+        
+            foreach (string bookId in removedBookIds)
+            {
+                using (var cmd = new MySqlCommand(sql, conn, transaction))
+                {
+                    cmd.Parameters.AddWithValue("@book_id", bookId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        
 
+        private List<string> GetCurrentBundleBookIds(
+            string bundleId,
+            MySqlConnection conn,
+            MySqlTransaction transaction)
+        {
+            List<string> bookIds = new List<string>();
+        
+            string sql = @"
+                SELECT book_id_in_bundle_book
+                FROM bundle_book
+                WHERE bundle_id_in_bundle_book = @bundle_id;";
+        
+            using (var cmd = new MySqlCommand(sql, conn, transaction))
+            {
+                cmd.Parameters.AddWithValue("@bundle_id", bundleId);
+        
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        bookIds.Add(reader["book_id_in_bundle_book"].ToString());
+                    }
+                }
+            }
+        
+            return bookIds;
         }
 
         private void ReplaceBundleBooks(string bundleId, MySqlConnection conn, MySqlTransaction transaction)
